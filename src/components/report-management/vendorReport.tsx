@@ -1,0 +1,84 @@
+import React, {useEffect, useState} from 'react';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import {CloudDownloadOutlined} from '@mui/icons-material';
+import MainFilter from '@/components/filter/mainFilter';
+import {FilterEnums} from '@/utils/enums/filter';
+import {checkReportCompleted, downloadReport, vendorReport} from '@/utils/services/reports';
+import {IFilterVendorDto} from '@/utils/interfaces/vendor.interface';
+import {useSelector} from 'react-redux';
+import {RootState} from '@/store';
+import {useRouter} from 'next/router';
+import {RoleEnum} from '@/utils/enums/role';
+import {LOGIN_ROUTE} from '@/utils/endpoints/routes';
+import {HttpStatusCode} from 'axios';
+
+const VendorReport = () => {
+    const [loading, setLoading] = useState(false);
+    const [intervalId, setIntervalId] = useState<NodeJS.Timer | null>(null);
+    const roles = useSelector((state: RootState) => state.auth.user)?.roles;
+    const router = useRouter();
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setLoading(true);
+        const formData = new FormData(e.currentTarget);
+        const data = {};
+        formData.forEach((value, key) => {
+            // @ts-ignore
+            if (value) data[key] = value;
+        });
+        const filter: IFilterVendorDto = data;
+        try {
+            const res = await vendorReport(filter);
+            if (res?.status === HttpStatusCode.Forbidden) {
+                setLoading(false);
+                throw new Error(res?.message);
+            }
+            if (res?._id) {
+                const id = setInterval(() => {
+                    checkReportCompleted(res._id).then((res) => {
+                        if (res && res.fileAttached) {
+                            if (id !== null) clearInterval(id);
+                            downloadReport(res._id, 'vendor-report').then((res) => {
+                                setLoading(false);
+                            });                        
+                        }
+                    });
+                }, 10000);
+                setIntervalId(id);
+            }
+        } catch {
+            setLoading(false);
+        }
+    };
+    useEffect(() => {
+        if (!roles?.includes(RoleEnum.VendorReport)) router.push(LOGIN_ROUTE);
+    }, [roles]);
+    useEffect(() => {
+        return () => {
+            if (intervalId !== null) clearInterval(intervalId);
+        };
+    }, [intervalId]);
+
+    return (
+        <Box sx={{flexGrow: 1}}>
+            <Container maxWidth="lg" sx={{mt: 2}}>
+                <MainFilter
+                    isOpen={true}
+                    loading={loading}
+                    onSubmit={handleSubmit}
+                    filter={{}}
+                    submitText={
+                        <>
+                            <CloudDownloadOutlined sx={{mr: 1}} /> Generate Report
+                        </>
+                    }
+                    selectedFilters={[FilterEnums.vendor, FilterEnums.date_range]}
+                />
+            </Container>
+        </Box>
+    );
+};
+
+export default VendorReport;

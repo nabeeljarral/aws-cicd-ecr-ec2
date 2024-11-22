@@ -1,0 +1,253 @@
+:root {
+    --primary: #071952;
+    --text-color: #071952;
+    --mobile-break-point: 1100px;
+}
+
+.payment {
+    margin: 0 auto;
+    font-family: 'Inter', sans-serif;
+    background: #f2f2f2;
+    color: var(--text-color);
+}
+
+.payment .f-10 {
+    font-size: 10px;
+}
+
+.payment .f-14 {
+    font-size: 14px;
+}
+
+.payment .f-16 {
+    font-size: 16px;
+}
+
+.payment .f-20 {
+    font-size: 20px;
+}
+
+.payment .f-24 {
+    font-size: 24px;
+}
+
+.payment .f-40 {
+    font-size: 40px;
+}
+
+.payment .d-block {
+    display: block;
+}
+
+.payment .d-inline-block {
+    display: inline-block;
+}
+
+.payment .d-inline-flex {
+    display: flex;
+}
+
+.payment .swal2-styled.swal2-confirm {
+    border-radius: 20px !important;
+    background: var(--primary) !important;
+    border-left-color: var(--primary) !important;
+    border-right-color: var(--primary) !important;
+    padding: 10px 40px !important;
+}
+
+.payment .swal2-popup {
+    border-radius: 40px !important;
+}
+
+.payment .nav {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+}
+
+.payment .nav .time {
+    height: 22px;
+    width: 19px;
+    display: flex;
+    gap: 15px
+}
+
+.payment .nav .lang span {
+    margin-left: 10px;
+}
+
+.payment .price {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 0;
+    text-align: left;
+    padding: 26px 0 17px 0;
+}
+
+
+.payment .qrcode-container {
+    text-align: center;
+}
+
+.payment .text-primary {
+    color: var(--primary);
+}
+
+.payment .qrcode-container .qrcode {
+    position: relative;
+}
+
+.payment .qrcode-container .qrcode > canvas {
+    width: 250px !important;
+    max-width: 100% !important;
+    height: auto;
+    border-radius: 23px;
+}
+
+.payment .qrcode-container .download-img {
+    color: var(--primary);
+    position: absolute;
+    bottom: 15px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.payment .qrcode-container .download-img a {
+    all: unset;
+
+}
+
+.payment .qrcode-container .download-img img {
+    height: 23px;
+    width: 25px;
+}
+
+.payment .payment-method {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+
+/*.payment .payment-method img {*/
+/*    height: 35px;*/
+/*    border-radius: 50%;*/
+/*    overflow: hidden;*/
+/*}*/
+
+.payment .utr-input {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.payment .utr-input input {
+    max-width: 330px;
+    height: 50px;
+    background: white;
+    border: 1px solid var(--primary);
+    box-shadow: none;
+    /* box-shadow: 0px 4px 17px rgba(0, 0, 0, 0.1); */
+    border-radius: 7px;
+    padding: 12px;
+    color: var(--primary);
+}
+
+.payment .utr-input input::placeholder {
+    color: var(--primary);
+    opacity: 0.7;
+}
+
+.payment .utr-input .btn {
+    padding-right: 30px;
+    padding-left: 30px;
+    width: 300px;
+    max-width: 100%;
+    background: var(--text-color);
+    color: var(--primary)
+
+}
+
+.payment .payment-process > div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+
+}
+
+.payment .payment-process .img:nth-child(1) {
+    align-self: start;
+}
+
+.payment .payment-process .img {
+    padding: 5px;
+    min-width: 40px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #FFF;
+    border-radius: 3px;
+    align-items: center;
+    text-align: center;
+    margin-right: 10px;
+}
+
+.payment .payment-process .img canvas {
+    height: auto;
+    max-height: 100%;
+}
+
+.payment .secure-list {
+    max-width: 450px;
+}
+
+.payment .secure-list .grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+}
+
+.payment .secure-list canvas {
+    width: 100%;
+}
+
+.payment .modal-body canvas {
+    max-width: 500px;
+}
+
+.payment .modal-body .accordion-body {
+    padding: 0 15px;
+}
+
+/*----MOBILE----*/
+@media (max-width: 1100px) {
+    .payment .d-desktop {
+        display: none !important;
+    }
+
+    .payment .nav .time {
+        height: 22px;
+        width: 19px;
+    }
+
+    .payment .utr-input {
+        max-width: 400px;
+    }
+
+    .payment .qrcode canvas {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .payment .price {
+        text-align: center
+    }
+}
+
+.payment .container {
+    background: #FFF;
+    max-width: 500px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

@@ -1,0 +1,34 @@
+version: 0.2
+
+env:
+  variables:
+    REPOSITORY_URI: "376129854991.dkr.ecr.ap-south-1.amazonaws.com/my-app"  # Replace with your repository URI
+    AWS_DEFAULT_REGION: "ap-south-1"  # Define the region you are using
+
+phases:
+  install:
+    commands:
+      # Install Docker (optional if not already installed in the build environment)
+      - echo Installing Docker
+      - yum install -y docker
+      # Authenticate Docker to your AWS ECR registry with debugging
+      - echo Logging into Amazon ECR
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION --debug | docker login --username AWS --password-stdin $REPOSITORY_URI
+  build:
+    commands:
+      # Build Docker image
+      - echo Building Docker image
+      - docker build -t my-app .
+      # Tag the image for ECR
+      - echo Tagging Docker image
+      - docker tag my-app:latest $REPOSITORY_URI:latest
+  post_build:
+    commands:
+      # Push the image to ECR
+      - echo Pushing Docker image to ECR
+      - docker push $REPOSITORY_URI:latest
+
+artifacts:
+  files:
+    - appspec.yml
+    - scripts/start-process.sh

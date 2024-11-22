@@ -1,0 +1,249 @@
+{
+	"info": {
+		"_postman_id": "8e530eb0-d550-4d3e-bf3a-44069c1c4f93",
+		"name": "GamingPE",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7353439"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json();\r",
+							"pm.collectionVariables.set(\"token\", jsonData.token);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "test@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "CompanyPassword",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://api.payz365.com/auth/login",
+					"protocol": "https",
+					"host": [
+						"api",
+						"payz365",
+						"com"
+					],
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "test@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "CompanyPassword",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "https://api.payz365.com/auth/login",
+							"protocol": "https",
+							"host": [
+								"api",
+								"payz365",
+								"com"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Mon, 10 Jul 2023 15:07:08 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "462"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"1ce-6VQ+u3yyk1yN0uDDDOkLW+FxF8o\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"isActive\": true,\n        \"_id\": \"6496a49d5ea8bf77b91ac99s9\",\n        \"username\": \"Company 1\",\n        \"email\": \"test@gmail.com\",\n        \"roles\": [\n            \"Report Management\",\n            \"Transactions\",\n            \"TransactionReport\"\n        ],\n        \"__v\": 0\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI7777sVCJ9.eyJlbWFpbCI6ImNsaWVudHJlcG9ydEBnbWFpbC33330iLCJyb2xlcyI6WyJSZXBvcnQgTWFuYWdlbWVudCIsIlRyYW5zYWN0aW9ucyIsIlRyYW5zYWN836hdUmVwb3J0Il0sImlhdCI6MTY4OTAwMTYyOCwiZXhwIjox8563jxjA2NDI4fQ.I6_kDpsR-NEY7Qpwql87642IsG_ZCjDA46YARkqv7kE\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Transaction",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzIR5cCI6IkpXVCJ9.eyJlbWFpbCI6IkdvYS5nYW1lc0BnbWFpbC5jb20iLCJyb2xlcyI6WyJSZXBvcnQgTWFuYWdlbWVudCIsIlRyYW5zYWN0aW9ucyIsIlRyYW5zYWN0aW9uUmVwb3J0Il0sImlhdCI6MTY4OTA2OTc0MiwiZXhwIjoxNjg5Njc0NTQyfQ.CGTjCu5jwZ8wElx5eapOZ7D8T8i34OhmItMNb5QwqpU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category\": \"P2\",  // required  values ['P1','P2','P3','P4']\r\n    \"amount\": 100, // required\r\n    \"relatedTo\": \"6496a49d5ea8bf77b91ac999\" // required\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.payz365.com/transactions",
+					"protocol": "https",
+					"host": [
+						"api",
+						"payz365",
+						"com"
+					],
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Transaction",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"relatedTo\": \"64ad24e1b564b386666669bc8\",\r\n    \"amount\": 99999,\r\n    \"category\":\"P1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.payz365.com/transactions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"payz365",
+								"com"
+							],
+							"path": [
+								"transactions"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 11 Jul 2023 10:56:36 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "383"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Server",
+							"value": "nginx"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"17f-hQAe4ojXL/p1GoerH2pRPpwraKw\""
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"setting\": \"64ad2573b568979ce639bfb\",\n    \"statusUpdates\": [],\n    \"amount\": 99999,\n    \"status\": \"page_viewed\",\n    \"is_claimed\": false,\n    \"createdBy\": \"64ad24e1b564b386666669bc8\",\n    \"relatedTo\": \"64ad24e1b564b386666669bc8\",\n    \"updates\": [],\n    \"_id\": \"64ad3564b58752304ce639cfb\",\n    \"createdAt\": \"2023-07-11T10:56:36.210Z\",\n    \"updatedAt\": \"2023-07-11T10:56:36.210Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": ""
+		}
+	]
+}

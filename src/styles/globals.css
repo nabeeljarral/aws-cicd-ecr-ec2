@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    font-family: 'Poppins', Arial, sans-serif;
+  }
+  
+  .MuiButton-root {
+    font-family: 'Poppins', Arial, sans-serif;
+  }
+  
+  .MuiInputBase-input {
+    font-family: 'Poppins', Arial, sans-serif;
+  }
+  .Toastify__toast-body div{
+    font-family: 'Poppins', Arial, sans-serif !important;
+  }
+:root {
+    --blue-400: rgb(96 165 250);
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+}
+
+@keyframes dropShadowAnimation {
+    0% {
+        box-shadow: 0 0 0 #f62222;
+        background: #FFE3E1;
+    }
+    50% {
+        box-shadow: 0 0 15px #f62222;
+    }
+    100% {
+        background: #FFE3E1;
+        box-shadow: 0 0 0 #f62222;
+    }
+}
+
+@keyframes dropShadowAnimationforlive {
+    0% {
+        box-shadow: 0 0 0 #f62222;
+        background: #deffd3d9;
+    }
+    50% {
+        box-shadow: 0 0 15px #f62222;
+    }
+    100% {
+        background: #deffd3d9;
+        box-shadow: 0 0 0 #f62222;
+    }
+}
+@keyframes dropShadowAnimation2 {
+    0% {
+        box-shadow: 0 0 0 #f62222;
+    }
+    50% {
+        box-shadow: 0 0 15px #f62222;
+    }
+    100% {
+        box-shadow: 0 0 0 #f62222;
+    }
+}
+@keyframes dropColorShadowAnimation {
+    0% {
+        color: #ff0000; /* Red */
+        font-weight: bold;
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(0, 66, 66, 0.1);
+    }
+    25% {
+        color: #ff7f7f; /* Light Red */
+        font-weight: bold;
+        transform: scale(1.02);
+        text-shadow: 2px 2px 10px rgba(0, 66, 66,0.2);
+        color: #ff4c4c; /* Mid Red */
+
+    }
+    50% {
+        color: #ff4c4c; /* Mid Red */
+        font-weight: bold;
+        transform: scale(1.05);
+        text-shadow: 4px 4px 15px rgba(0, 66, 66, 0.3);
+    }
+    75% {
+        color: #ff7f7f; /* Light Red */
+        font-weight: bold;
+        transform: scale(1.02);
+        text-shadow: 2px 2px 10px rgba(0, 66, 66, 0.2);
+        color: #ff4c4c; /* Mid Red */
+
+    }
+    100% {
+        color: #ff0000; /* Red */
+        font-weight: bold;
+        transform: scale(1);
+        text-shadow: 0 0 0 rgba(70, 66, 66, 0.1);
+    }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-start-rgb: 0, 0, 0;
+        --background-end-rgb: 0, 0, 0;
+    }
+}
+
+body {
+    color: rgb(var(--foreground-rgb));
+    /*  background: linear-gradient(*/
+    /*      to bottom,*/
+    /*      transparent,*/
+    /*      rgb(var(--background-end-rgb))*/
+    /*    )*/
+    /*    rgb(var(--background-start-rgb));*/
+}
+
+/*Start Loader*/
+.loader {
+    /* background: var(--blue-400); */
+    /* position: fixed; */
+    /* background-color: skyblue; */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* z-index: 9999; */
+}
+
+.lds-ripple {
+    display: inline-block;
+    position: relative;
+    width: 80px;
+    height: 80px;
+}
+
+.lds-ripple div {
+    position: absolute;
+    border: 4px solid #0f0404;
+    opacity: 1;
+    border-radius: 50%;
+    animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.lds-ripple div:nth-child(2) {
+    animation-delay: -0.5s;
+}
+.Selectinput > label {
+    margin-top: -6px !important;
+}
+.Selectinput >div{
+height: 40px !important;
+}
+
+.Selectinput input{
+    padding: 0px 0px 0px 6px !important;
+    }
+@keyframes lds-ripple {
+    0% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    4.9% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 0;
+    }
+    5% {
+        top: 36px;
+        left: 36px;
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+    100% {
+        top: 0px;
+        left: 0px;
+        width: 72px;
+        height: 72px;
+        opacity: 0;
+    }
+}
+
+/*End Loader*/
+
+.react-minimal-datetime-range__range-input-wrapper {
+    height: 40px !important;
+    border-radius: 12px !important;
+    padding-left: 6px !important;
+}
+
+.react-minimal-datetime-range__range-input-wrapper:hover {
+    border-color: #555555;
+}
+
+.react-minimal-datetime-range.visible {
+    z-index: 2 !important;
+}
