@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   variables:
-    REPOSITORY_URI: "376129854991.dkr.ecr.ap-south-1.amazonaws.com/my-app"  # Replace with your repository URI
-    AWS_DEFAULT_REGION: "ap-south-1"  # Define the region you are using
+    REPOSITORY_URI: "717549417987.dkr.ecr.us-east-2.amazonaws.com/dev/ract"  # Replace with your repository URI
+    AWS_DEFAULT_REGION: "us-east-2"  # Define the region you are using
 
 phases:
   install:
@@ -18,10 +18,10 @@ phases:
     commands:
       # Build Docker image
       - echo Building Docker image
-      - docker build -t my-app .
+      - docker build -t dev/ract .
       # Tag the image for ECR
       - echo Tagging Docker image
-      - docker tag my-app:latest $REPOSITORY_URI:latest
+      - docker tag dev/ract:latest $REPOSITORY_URI:latest
   post_build:
     commands:
       # Push the image to ECR
