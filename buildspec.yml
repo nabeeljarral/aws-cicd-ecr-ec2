@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    REPOSITORY_URI: "717549417987.dkr.ecr.us-east-2.amazonaws.com/dev/ract"  # Replace with your repository URI
+    REPOSITORY_URI: "717549417987.dkr.ecr.us-east-2.amazonaws.com/aws-codepipeline-project"  # Replace with your repository URI
     AWS_DEFAULT_REGION: "us-east-2"  # Define the region you are using
 
 phases:
